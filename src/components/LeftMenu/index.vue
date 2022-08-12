@@ -1,8 +1,8 @@
 <template>
   <div class="wrap shadow">
-    <div class="brand">Brand</div>
+    <!-- <div class="brand">Brand</div> -->
     <MenuCom></MenuCom>
-    <div class="menu-item setting">
+    <!-- <div class="menu-item setting">
       <el-icon class="icon">
         <setting />
       </el-icon>
@@ -15,14 +15,14 @@
       </el-icon>
       <div v-show="!titleShow"
            class="title">个人中心</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
 import MenuCom from './menu.vue'
 import useAppStore from '../../store/modules/app'
-import { User, Setting } from '@element-plus/icons-vue'
+// import { User, Setting } from '@element-plus/icons-vue'
 
 const menuCollapse = computed(() => useAppStore().menuCollapse)
 const titleShow = ref(false)

@@ -2,10 +2,11 @@
   <el-menu default-active="2"
            router
            class="el-menu-vertical"
+           :default-openeds="['1']"
            :collapse="menuCollapse">
     <el-sub-menu v-for="menu in menus"
                  :key="menu.label"
-                 :index="menu.label">
+                 :index="menu.index">
       <template #title>
         <el-icon>
           <Files />
@@ -28,22 +29,24 @@ const menus = ref([])
 menus.value = [
   {
     label: 'Three.js',
+    index: '1',
     children: [
       {
         label: 'index',
         index: '/three'
       }
     ]
-  },
-  {
-    label: 'WebGL',
-    children: [
-      {
-        label: 'index',
-        index: '/webgl'
-      }
-    ]
   }
+  // {
+  //   label: 'WebGL',
+  //   index: '2',
+  //   children: [
+  //     {
+  //       label: 'index',
+  //       index: '/webgl'
+  //     }
+  //   ]
+  // }
 ]
 </script>
 
