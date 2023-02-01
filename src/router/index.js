@@ -8,9 +8,14 @@ const routes = [
     component: Layout,
     children: [
       {
-        path: 'three',
-        name: 'three',
+        path: 'helloThree',
+        name: 'helloThree',
         component: () => import('../views/three/index.vue')
+      },
+      {
+        path: 'Primitives',
+        name: 'Primitives',
+        component: () => import('../views/three/Primitives.vue')
       },
       {
         path: 'webgl',

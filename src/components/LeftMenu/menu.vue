@@ -28,12 +28,16 @@ const menuCollapse = computed(() => useAppStore().menuCollapse)
 const menus = ref([])
 menus.value = [
   {
-    label: 'Three.js',
+    label: 'Base',
     index: '1',
     children: [
       {
-        label: 'index',
-        index: '/three'
+        label: 'helloThree',
+        index: '/helloThree'
+      },
+      {
+        label: 'Primitives',
+        index: '/Primitives'
       }
     ]
   }
