@@ -5,7 +5,7 @@
 <script setup>
 import * as THREE from 'Three'
 
-// box
+// 各种图元
 function geBox () {
   const width = 8
   const height = 8
@@ -35,28 +35,32 @@ function geCylinder () {
     radiusTop, radiusBottom, height, radialSegments)
   return geometry
 }
+function geDodecahedron () {
+  const radius = 6 // ui: radius
+  const detail = 0
+  const geometry = new THREE.DodecahedronGeometry(radius, detail)
+  return geometry
+}
 
+// 随机纹理
 function createMaterial () {
   const material = new THREE.MeshPhongMaterial({ side: THREE.DoubleSide })
-
   const hue = Math.floor(Math.random() * 100) / 100 // 随机获得一个色相
   const saturation = 1 // 饱和度
   const luminance = 0.5 // 亮度
-
   material.color.setHSL(hue, saturation, luminance)
-
   return material
 }
 
 function init () {
   const scene = new THREE.Scene()
-  scene.background = new THREE.Color(0xdee1e6)
+  scene.background = new THREE.Color(0x222222)
   const dom = document.getElementById('threeWrap')
   const width = dom.clientWidth
   const height = dom.clientHeight
   const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
   // const camera = new Three.PerspectiveCamera(40, 2, 0.1, 1000)
-  camera.position.z = 120
+  camera.position.z = 70
 
   // 初始化渲染器
   const renderer = new THREE.WebGLRenderer()
@@ -70,7 +74,7 @@ function init () {
   scene.add(light0)
 
   const light1 = new THREE.DirectionalLight(0xFFFFFF, 1)
-  light1.position.set(30, -30, 40)
+  light1.position.set(30, 20, 40)
   light1.target.position.set(0, 0, 0)
   scene.add(light1)
 
@@ -81,7 +85,7 @@ function init () {
 
   // 获取各个 solid 类型的图元实例，并添加到 solidPrimitivesArr 中
   const solidPrimitivesArr = []
-  solidPrimitivesArr.push(geBox(), geCircle(), geCone(), geCylinder())
+  solidPrimitivesArr.push(geBox(), geCircle(), geCone(), geCylinder(), geDodecahedron())
 
   // 将各个 solid 类型的图元实例转化为网格，并添加到 primitivesArr 中
   const meshArr = []
