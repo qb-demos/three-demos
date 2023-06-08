@@ -24,17 +24,19 @@ function init () {
   renderer.setSize(width, height)
   dom.appendChild(renderer.domElement)
 
+  // Mesh
   const geometry = new THREE.BoxGeometry(1, 1, 1)
   const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
   const mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
 
-  // 添加 2 盏灯光
+  // 灯光 1
   const light0 = new THREE.DirectionalLight(0xFFFFFF, 1)
   light0.position.set(-60, 30, 40)
   light0.target.position.set(0, 0, 0)
   scene.add(light0)
 
+  // 灯光 2
   const light1 = new THREE.DirectionalLight(0xFFFFFF, 1)
   light1.position.set(30, -30, 40)
   light1.target.position.set(0, 0, 0)
@@ -51,7 +53,7 @@ function init () {
   function animate () {
     requestAnimationFrame(animate)
 
-    mesh.rotation.x += 0.01
+    // mesh.rotation.x += 0.01
     mesh.rotation.y += 0.01
 
     renderer.render(scene, camera)

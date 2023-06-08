@@ -4,43 +4,17 @@
 
 <script setup>
 import * as THREE from 'Three'
-
-// 各种图元
-function geBox () {
-  const width = 8
-  const height = 8
-  const depth = 8
-  const box = new THREE.BoxBufferGeometry(width, height, depth)
-  return box
-}
-function geCircle () {
-  const radius = 7
-  const segments = 24
-  const myCircle = new THREE.CircleBufferGeometry(radius, segments)
-  return myCircle
-}
-function geCone () {
-  const radius = 6 // ui: radius
-  const height = 8 // ui: height
-  const radialSegments = 16 // ui: radialSegments
-  const geometry = new THREE.ConeGeometry(radius, height, radialSegments)
-  return geometry
-}
-function geCylinder () {
-  const radiusTop = 4 // ui: radiusTop
-  const radiusBottom = 4 // ui: radiusBottom
-  const height = 8 // ui: height
-  const radialSegments = 12 // ui: radialSegments
-  const geometry = new THREE.CylinderGeometry(
-    radiusTop, radiusBottom, height, radialSegments)
-  return geometry
-}
-function geDodecahedron () {
-  const radius = 6 // ui: radius
-  const detail = 0
-  const geometry = new THREE.DodecahedronGeometry(radius, detail)
-  return geometry
-}
+import {
+  box,
+  circle,
+  cone,
+  cylinder,
+  dodecahedron,
+  extrude,
+  icosahedron,
+  lathe,
+  octahedron
+} from '../../common/primitives'
 
 // 随机纹理
 function createMaterial () {
@@ -51,7 +25,6 @@ function createMaterial () {
   material.color.setHSL(hue, saturation, luminance)
   return material
 }
-
 function init () {
   const scene = new THREE.Scene()
   scene.background = new THREE.Color(0x222222)
@@ -85,7 +58,17 @@ function init () {
 
   // 获取各个 solid 类型的图元实例，并添加到 solidPrimitivesArr 中
   const solidPrimitivesArr = []
-  solidPrimitivesArr.push(geBox(), geCircle(), geCone(), geCylinder(), geDodecahedron())
+  solidPrimitivesArr.push(
+    box(),
+    circle(),
+    cone(),
+    cylinder(),
+    dodecahedron(),
+    extrude(),
+    icosahedron(),
+    lathe(),
+    octahedron()
+  )
 
   // 将各个 solid 类型的图元实例转化为网格，并添加到 primitivesArr 中
   const meshArr = []
@@ -97,7 +80,7 @@ function init () {
 
   // 定义物体在画面中显示的网格布局
   const eachRow = 5 // 每一行显示 5 个
-  const spread = 15 // 行高 和 列宽
+  const spread = 20 // 行高 和 列宽
 
   // 配置每一个图元实例，转化为网格，并位置和材质后，将其添加到场景中
   meshArr.forEach((mesh, index) => {
