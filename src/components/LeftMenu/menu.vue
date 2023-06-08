@@ -28,29 +28,27 @@ const menuCollapse = computed(() => useAppStore().menuCollapse)
 const menus = ref([])
 menus.value = [
   {
-    label: 'Base',
+    label: 'Beginner',
     index: '1',
     children: [
-      {
-        label: 'helloThree',
-        index: '/helloThree'
-      },
-      {
-        label: 'Primitives',
-        index: '/Primitives'
-      }
+      { label: '01', index: '/beginner/01' },
+      { label: '02 Primitives', index: '/beginner/Primitives' }
+    ]
+  },
+  {
+    label: 'Intermediate',
+    index: '2',
+    children: [
+      { label: '01', index: '/intermediate/01' }
+    ]
+  },
+  {
+    label: 'Advanced',
+    index: '3',
+    children: [
+      { label: '01', index: '/advanced/01' }
     ]
   }
-  // {
-  //   label: 'WebGL',
-  //   index: '2',
-  //   children: [
-  //     {
-  //       label: 'index',
-  //       index: '/webgl'
-  //     }
-  //   ]
-  // }
 ]
 </script>
 
