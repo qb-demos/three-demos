@@ -15,7 +15,7 @@ function init () {
 
   // Camera
   const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
-  camera.position.z = 5
+  camera.position.z = 2
   // camera.position.x = -5
   // camera.position.y = 2
 
@@ -26,7 +26,7 @@ function init () {
 
   // Mesh
   const geometry = new THREE.BoxGeometry(1, 1, 1)
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 })
   const mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
 
@@ -50,13 +50,30 @@ function init () {
   // const helper1 = new THREE.DirectionalLightHelper(light1)
   // scene.add(helper1)
 
-  function animate () {
-    requestAnimationFrame(animate)
+  function resizeRendererToDisplaySize (renderer) {
+    const canvas = renderer.domElement
+    const pixelRatio = window.devicePixelRatio
+    const width = canvas.clientWidth * pixelRatio | 0
+    const height = canvas.clientHeight * pixelRatio | 0
+    const needResize = canvas.width !== width || canvas.height !== height
+    if (needResize) {
+      renderer.setSize(width, height, false)
+    }
+    return needResize
+  }
 
+  function animate () {
     // mesh.rotation.x += 0.01
     mesh.rotation.y += 0.01
 
+    if (resizeRendererToDisplaySize(renderer)) {
+      const canvas = renderer.domElement
+      camera.aspect = canvas.clientWidth / canvas.clientHeight
+      camera.updateProjectionMatrix()
+    }
     renderer.render(scene, camera)
+
+    requestAnimationFrame(animate)
   };
 
   animate()
