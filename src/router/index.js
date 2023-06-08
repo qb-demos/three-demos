@@ -15,7 +15,7 @@ const routes = [
         redirect: 'beginner/01',
         children: [
           { path: '01', name: 'beginner-01', component: () => import('../views/beginner/01.vue') },
-          { path: 'Primitives', name: 'Primitives', component: () => import('../views/beginner/Primitives.vue') }
+          { path: '02', name: 'beginner-02', component: () => import('../views/beginner/02primitives.vue') }
         ]
       },
       {

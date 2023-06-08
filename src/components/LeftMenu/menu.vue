@@ -32,7 +32,7 @@ menus.value = [
     index: '1',
     children: [
       { label: '01', index: '/beginner/01' },
-      { label: '02 Primitives', index: '/beginner/Primitives' }
+      { label: '02 Primitives', index: '/beginner/02' }
     ]
   },
   {
