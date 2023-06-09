@@ -15,7 +15,10 @@ const routes = [
         redirect: 'beginner/01',
         children: [
           { path: '01', name: 'beginner-01', component: () => import('../views/beginner/01.vue') },
-          { path: '02', name: 'beginner-02', component: () => import('../views/beginner/02primitives.vue') }
+          { path: '02', name: 'beginner-02', component: () => import('../views/beginner/02Primitives.vue') },
+          { path: '03', name: 'beginner-03', component: () => import('../views/beginner/03SceneGraph.vue') },
+          { path: '04', name: 'beginner-04', component: () => import('../views/beginner/04Material.vue') },
+          { path: '06', name: 'beginner-05', component: () => import('../views/beginner/05Texture.vue') }
         ]
       },
       {

@@ -32,7 +32,10 @@ menus.value = [
     index: '1',
     children: [
       { label: '01', index: '/beginner/01' },
-      { label: '02 Primitives', index: '/beginner/02' }
+      { label: '02 Primitives', index: '/beginner/02' },
+      { label: '03 Scene Graph', index: '/beginner/03' },
+      { label: '04 Material', index: '/beginner/04' },
+      { label: '05 Texture', index: '/beginner/05' }
     ]
   },
   {
