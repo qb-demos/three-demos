@@ -15,7 +15,7 @@ function init () {
 
   // Camera
   const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
-  camera.position.z = 2
+  camera.position.z = 5
   // camera.position.x = -5
   // camera.position.y = 2
 
