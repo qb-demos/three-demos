@@ -4,6 +4,7 @@
 
 <script setup>
 import * as THREE from 'Three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 function init () {
   // Scene
@@ -23,12 +24,21 @@ function init () {
   const renderer = new THREE.WebGLRenderer()
   renderer.setSize(width, height)
   dom.appendChild(renderer.domElement)
+  // 控制器
+  const controls = new OrbitControls(camera, renderer.domElement)
 
   // Mesh
   const geometry = new THREE.BoxGeometry(1, 1, 1)
-  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 })
+  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00, flatShading: true })
   const mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
+
+  // Mesh
+  const geometry2 = new THREE.SphereGeometry(0.5, 15, 16)
+  const material2 = new THREE.MeshNormalMaterial({ color: 0x00ff00 })
+  const mesh2 = new THREE.Mesh(geometry2, material2)
+  mesh2.position.set(2, 0, 0)
+  scene.add(mesh2)
 
   // 灯光 1
   const light0 = new THREE.DirectionalLight(0xFFFFFF, 1)
@@ -65,6 +75,7 @@ function init () {
   function animate () {
     // mesh.rotation.x += 0.01
     mesh.rotation.y += 0.01
+    mesh2.rotation.y += 0.01
 
     if (resizeRendererToDisplaySize(renderer)) {
       const canvas = renderer.domElement
@@ -72,6 +83,7 @@ function init () {
       camera.updateProjectionMatrix()
     }
     renderer.render(scene, camera)
+    controls.update()
 
     requestAnimationFrame(animate)
   };
